@@ -166,8 +166,13 @@ def on_btn_click():
 
 @st.cache_resource
 def load_model():
-    model = AutoModelForCausalLM.from_pretrained("model", trust_remote_code=True)
-    tokenizer = AutoTokenizer.from_pretrained("model", trust_remote_code=True)
+    base_path = 'model'
+    os.system(f'git clone https://code.openxlab.org.cn/AIXNS/careyou_7b_16bit_v3_2.git {base_path}')
+    os.system(f'cd {base_path} && git lfs pull')
+    
+    model = AutoModelForCausalLM.from_pretrained(base_path, device_map="auto", trust_remote_code=True, torch_dtype=torch.float16).eval()
+    # model = AutoModelForCausalLM.from_pretrained("model", trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained(base_path, trust_remote_code=True)
     return model, tokenizer
 
 
