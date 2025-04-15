@@ -165,14 +165,7 @@ def on_btn_click():
 
 @st.cache_resource
 def load_model():
-    model = AutoModelForCausalLM.from_pretrained("model", low_cpu_mem_usage=True, 
-                                                torch_dtype=torch.bfloat16,
-                                                device_map="auto",
-                                                load_in_4bit=True,
-                                                bnb_4bit_compute_dtype=torch.bfloat16,
-                                                bnb_4bit_quant_type="nf4",
-                                                bnb_4bit_use_double_quant=True,
-                                                trust_remote_code=True)
+    model = AutoModelForCausalLM.from_pretrained("model", trust_remote_code=True)
     tokenizer = AutoTokenizer.from_pretrained("model", trust_remote_code=True)
     return model, tokenizer
 
