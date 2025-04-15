@@ -28,9 +28,9 @@ os.system('git lfs install')
 # os.system("python download_model.py AIXNS/careyou_7b_16bit_v3_2")
 os.system('pip install -r requirements.txt')
 
-if not os.path.isdir("model"):
-    print("[ERROR] not find model dir")
-    exit(0)
+# if not os.path.isdir("model"):
+#     print("[ERROR] not find model dir")
+#     exit(0)
 
 
 @dataclass
