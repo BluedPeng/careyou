@@ -24,8 +24,8 @@ from transformers import AutoTokenizer, AutoModelForCausalLM  # isort: skip
 from openxlab.model import download
 
 logger = logging.get_logger(__name__)
-os.system('apt install git-lfs')
-os.system("python download_model.py AIXNS/careyou_7b_16bit_v3_2")
+os.system('git lfs install')
+# os.system("python download_model.py AIXNS/careyou_7b_16bit_v3_2")
 os.system('pip install -r requirements.txt')
 
 if not os.path.isdir("model"):
