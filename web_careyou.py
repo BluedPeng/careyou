@@ -29,7 +29,7 @@ if not os.path.isdir("model"):
     print("[ERROR] not find model dir")
     exit(0)
 
-
+print(22222)
 @dataclass
 class GenerationConfig:
     # this config is used for chat to provide more diversity
@@ -160,7 +160,7 @@ def generate_interactive(
 def on_btn_click():
     del st.session_state.messages
 
-
+print(3333)
 @st.cache_resource
 def load_model():
     model = AutoModelForCausalLM.from_pretrained("model", low_cpu_mem_usage=True, 
@@ -189,7 +189,7 @@ def prepare_generation_config():
     generation_config = GenerationConfig(max_length=max_length, top_p=top_p, temperature=temperature)
 
     return generation_config
-
+print(4444)
 
 user_prompt = "<|im_start|>user\n{user}<|im_end|>\n"
 robot_prompt = "<|im_start|>assistant\n{robot}<|im_end|>\n"
@@ -222,8 +222,9 @@ def combine_history(prompt):
         total_prompt += cur_prompt
     total_prompt = total_prompt + train_prompt_style.format(prompt)
     return total_prompt
-
+print(5555)
 def main():
+    print(111111)
     st.markdown("有什么心理上的问题都可以来咨询Care呀。", unsafe_allow_html=True)
     
     # torch.cuda.empty_cache()
