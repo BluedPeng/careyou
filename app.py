@@ -170,7 +170,12 @@ def load_model():
     os.system(f'git clone https://code.openxlab.org.cn/AIXNS/careyou_7b_16bit_v3_2.git {base_path}')
     os.system(f'cd {base_path} && git lfs pull')
     
-    model = AutoModelForCausalLM.from_pretrained(base_path, device_map="auto", trust_remote_code=True, torch_dtype=torch.float16).eval()
+    model = AutoModelForCausalLM.from_pretrained(base_path, device_map="auto", trust_remote_code=True, torch_dtype=torch.float16,
+                                                load_in_4bit=True,
+                                                bnb_4bit_compute_dtype=torch.bfloat16,
+                                                bnb_4bit_quant_type="nf4",
+                                                bnb_4bit_use_double_quant=True,
+                                                trust_remote_code=True).eval()
     # model = AutoModelForCausalLM.from_pretrained("model", trust_remote_code=True)
     tokenizer = AutoTokenizer.from_pretrained(base_path, trust_remote_code=True)
     return model, tokenizer
