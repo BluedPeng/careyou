@@ -10,3 +10,4 @@ tiktoken
 einops
 oss2
 requests
+bitsandbytes
