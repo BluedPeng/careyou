@@ -177,7 +177,7 @@ def load_model():
     #                                             bnb_4bit_use_double_quant=True,
     #                                             trust_remote_code=True).eval()
     
-    model = AutoModelForCausalLM.from_pretrained(base_path, device_map="cpu", torch_dtype=torch.float32, low_cpu_mem_usage=True,
+    model = AutoModelForCausalLM.from_pretrained(base_path, device_map="cpu", torch_dtype=torch.float16, low_cpu_mem_usage=True, load_in_4bit=True,
                                                 trust_remote_code=True).eval()
 
     # model = AutoModelForCausalLM.from_pretrained("model", trust_remote_code=True)
